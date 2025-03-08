@@ -1,0 +1,1 @@
+This directory hosts backend application to provide RestAPIs for graph db queries and visualizations.

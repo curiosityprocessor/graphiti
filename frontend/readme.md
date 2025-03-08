@@ -1,0 +1,1 @@
+This directory hosts frontend application to provide UI/UX for graph db queries and visualizations.
