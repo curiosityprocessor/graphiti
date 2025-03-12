@@ -44,7 +44,7 @@
   });
 
   $: if (cy && elements) {
-    cy.elements().remove(); // clear exisint elements
+    cy.elements().remove(); // clear existing elements
     cy.add(elements);
     console.log(`added ${elements.length} elements, re-running layout`);
     cy.layout({ name: 'random' }).run(); // re-run layout
