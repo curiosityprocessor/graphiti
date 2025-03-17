@@ -8,6 +8,9 @@
   let graphContainer: HTMLDivElement;
   let cy: cytoscape.Core;
 
+  let selectedNode: any = null;
+  let nodeProperties = {};
+
   onMount(() => {
     cy = cytoscape({
       container: graphContainer,
@@ -41,6 +44,12 @@
         name: 'random',
       },
     });
+
+    cy.on('click', 'node', (event) => {
+      const node = event.target;
+      selectedNode = node;
+      nodeProperties = node.data();
+    });
   });
 
   $: if (cy && elements) {
@@ -52,9 +61,29 @@
 </script>
 
 <div bind:this={graphContainer} id="cytoscape-graph" style="height: 100%; width: 100%; border: 1px solid #eee;"></div>
+{#if selectedNode}
+  <div class="details">
+    <h3>Node</h3>
+    <div class="properties">
+      <string>Properties:</string>
+      <pre>{JSON.stringify(nodeProperties, null, 2)}</pre>
+    </div>
+  </div>
+{/if}
 
 <style>
   #cytoscape-graph {
     background-color: #f0f0f0; /* Light background */
+  }
+
+  .details {
+    margin-top: 30px;
+    padding: 15px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+  }
+
+  .properties {
+    margin-bottom: 10px;
   }
 </style>

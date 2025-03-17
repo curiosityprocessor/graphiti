@@ -8,7 +8,6 @@
   <div style="height: 600px; width: 100%;">
     <GraphDisplay elements={[...dummyNodes, ...dummyEdges]} />
   </div>
-  <p>This is a simple graph visualization.</p>
 </main>
 
 <style>
